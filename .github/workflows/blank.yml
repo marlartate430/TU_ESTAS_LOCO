@@ -1,0 +1,17 @@
+name: Analisis de Calidad
+
+on: [push]
+
+jobs:
+  analisis:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Analizar calidad del código
+        uses: advanced-security/python-lint-code-scanning-action@v1
+        with:
+          linter: pylint
